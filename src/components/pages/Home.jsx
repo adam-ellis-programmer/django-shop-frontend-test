@@ -68,7 +68,7 @@ const Home = () => {
             text={`special offers`}
             styles={` mt-8 text-center text-3xl`}
           />
-          <section className=' sm:block md:flex  gap-6 mt-7'>
+          <section className='grid md:grid-cols-2 gap-6 mt-7'>
             {reduxProducts &&
               reduxProducts
                 ?.filter((item) => item.featured === true)
@@ -80,7 +80,7 @@ const Home = () => {
 
           <Header text={`worth a look`} styles={` mt-8 text-center text-3xl`} />
 
-          <section className='grid  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-8 mb-5 '>
+          <section className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 mb-5 '>
             {reduxProducts && reduxProducts.length > 0 ? (
               [...reduxProducts]
                 .reverse()
