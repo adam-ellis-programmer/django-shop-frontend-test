@@ -6,7 +6,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { resetCartCount } from '../cart/cartSlice'
 
-const API_URL = 'http://localhost:8000/api'
+// const API_URL = 'http://localhost:8000/api'
+import { API_URL } from '../../config'
 
 // ==================================================================
 // fetch products public
