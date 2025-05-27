@@ -87,8 +87,9 @@ const SignIn = () => {
 
           <Form onSubmit={handleSubmit} className='shadow-2xl p-10 md:p-12'>
             <FormHeader text='Sign In ' />
-            {error && <div className='alert alert-error mb-4'>{error}</div>}
-
+            {error && (
+              <div className='alert alert-error mb-4'>{error.error}</div>
+            )}
             {inputs.map(({ id, placeholder, name, type, defaultValue }) => {
               return (
                 <input

@@ -33,5 +33,8 @@ export { default as ContactForm } from './forms/ContactForm'
 export { default as FormHeader } from '../components/Headings/FormHeader'
 export { default as CartLink } from '../components/layout/CartLink'
 
+// errors
+export { default as MainError } from './errors/GenericError'
+
 // actions
 // export { addProductAction } from './pages/user/AddProductPage'

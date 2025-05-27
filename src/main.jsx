@@ -26,6 +26,7 @@ import {
   SearchByCategoryPage,
   PaymentPage,
   ReturnPage,
+  MainError,
 } from './components/index'
 
 // In JavaScript, functions are reference types.
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     Component: MainLayout,
+    errorElement: <MainError />,
     children: [
       { index: true, Component: HomePage },
       { path: 'contact', Component: ContactPage },
@@ -86,7 +88,7 @@ const router = createBrowserRouter([
     ],
   },
 
-  { path: 'sign-in', Component: SignInPage },
+  { path: 'sign-in', Component: SignInPage, errorElement: <MainError /> },
   { path: 'sign-up', Component: SignUpPage },
 ])
 createRoot(document.getElementById('root')).render(

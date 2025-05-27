@@ -30,7 +30,7 @@ const cartService = {
     }
   },
 
-  // Add a product to the cart --- 
+  // Add a product to the cart ---
   addToCart: async (productId, quantity = 1) => {
     try {
       console.log(
@@ -42,6 +42,8 @@ const cartService = {
 
       // Get CSRF token if needed (for Django)
       const csrfToken = getCsrfToken()
+      console.log('token', csrfToken)
+      console.log('All cookies:', document.cookie)
 
       console.log(csrfToken)
 
@@ -131,12 +133,9 @@ const cartService = {
         headers['X-CSRFToken'] = csrfToken
       }
 
-      const response = await authAxios.delete(
-        '/cart/clear/',
-        {
-          headers,
-        }
-      )
+      const response = await authAxios.delete('/cart/clear/', {
+        headers,
+      })
 
       return response.data
     } catch (error) {
