@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@plugin "daisyui" {
+  themes: all;
+}
+
+/* ================== color controlls ======================== */
+:root {
+  --bg-primary: white;
+  --text-primary: black;
+  --bg-card: #f7fafc;
+}
+
+.dark {
+  --bg-primary: #384c61;
+  --text-primary: white;
+  --bg-card: #2d3748;
+}
+
+/* ================== color controlls ======================== */
+@layer components {
+  .align-element {
+    @apply mx-auto w-5/6;
+  }
+  .m-h {
+    @apply min-h-[calc(100vh-140px)];
+  }
+  /* Add this new utility class */
+  .show-above-500 {
+    display: none;
+    @media (min-width: 500px) {
+      display: block;
+    }
+  }
+
+  .show-below-768 {
+    display: block;
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+.dark {
+  background: #384c61;
+  color: #fff;
+}
+
+::selection {
+  background-color: #ff2c5e;
+  color: #fff;
+}
+body {
+  font-family: 'Sansation', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mobile-nav-container {
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+  top: 0;
+  transform: translateX(-100%);
+  transition: transform 600ms cubic-bezier(0.175, 0.885, 0.52, 1.275);
+  margin: auto;
+  max-width: 700px;
+}
+
+.mobileOpen {
+  transform: translate(0);
+}
+
+.hover {
+  transition: transform 500ms ease-in-out;
+}
+
+.hover:hover {
+  transform: scale(1) translatey(-15px);
+}
+.hover2 {
+  transition: transform 500ms ease-in-out;
+}
+
+.hover2:hover {
+  transform: scale(1) translateX(-25px);
+}
+.border-b-half {
+  border-bottom-width: 0.5px;
+  border-bottom-style: dashed;
+}
+
+.border-thin {
+  border-bottom-width: 0.5px;
+  border-style: dashed;
+  border-color: blue;
+  margin-bottom: 2px;
+}
+
+.new-product-form-control {
+  margin: 1rem 0;
+  /* border: 1px solid; */
+}
+
+.dark .dark-border {
+  border: 0.1px solid;
+}
+.card,
+.search-input {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  /* border: .1px solid; */
+}
+
+.dark .category-card-dark {
+  box-shadow: 1px 2px 20px #ffffff5f;
+}
+
+.dark .select-dark {
+  background-color: gray;
+  color: #fff;
+  border: none;
+}
+
+.dark .dark-box-shadow-1 {
+  box-shadow: 1px 2px 20px #ffffff5f;
+}
+.dark .dark-btn-1 {
+  border: 1px solid;
+  color: #fff;
+}
+.dark .dark-btn-2 {
+  /* border: 1px solid; */
+  color: #000;
+}
+
+.dark .hero-dark {
+  box-shadow: 1px 2px 15px #cccccc74;
+}
+
+.dark .dark-cat-btn {
+  background-color: #44649ff7;
+  color: #fff;
+  border: none;
+}
+
+.dark .prod-list-dark {
+  background-color: #a4a5a6;
+}
+.dark .prod-list-dark-2 {
+  background-color: #384c61;
+}
+
+.dark .list-btn {
+  background-color: #0000;
+}
+.dark input[type='password'],
+.dark input[type='email'],
+.dark input[type='text'] {
+  background-color: #2d3748;
+  color: white;
+  border: 1px solid #4a5568;
+}
+
+.dark input[type='select'] {
+  background-color: #2d3748;
+  color: white;
+  border: 1px solid #4a5568;
+}
+
+.dark select {
+  background-color: #2d3748;
+  color: white;
+  border: 1px solid #4a5568;
+}
+
+.dark input[type='file'] {
+  background-color: #2d3748;
+  color: white;
+  border: 1px solid #4a5568;
+}
+
+.dark textarea {
+  background-color: #2d3748;
+  color: white;
+  border: 1px solid #4a5568;
+}
+
+.dark .order-item {
+  background-color: #465059;
+  color: #fff;
+  border: none;
+}
+
+.dark .order-item2 {
+  background-color: #586b73;
+  color: #fff;
+  border: none;
+}
