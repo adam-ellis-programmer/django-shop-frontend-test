@@ -17,7 +17,8 @@ const Header = () => {
     //   import.meta.env.VITE_NODE_ENV === 'production'
     //     ? '/admin/' // In production, they'll be on the same domain
     //     : 'http://localhost:8000/admin/'
-    const adminUrl = import.meta.env.VITE_NODE_ENV === API_URL + '/admin'
+
+    const adminUrl = API_URL + '/admin'
 
     return (
       <a href={adminUrl} target='_blank' rel='noopener noreferrer'>
