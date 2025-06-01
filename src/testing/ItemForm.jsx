@@ -9,7 +9,7 @@ function ItemForm({ onItemAdded }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-
+    //
     try {
       const response = await axios.post('http://localhost:8000/api/items/', {
         name,
