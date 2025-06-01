@@ -18,11 +18,11 @@ const Header = () => {
     //     ? '/admin/' // In production, they'll be on the same domain
     //     : 'http://localhost:8000/admin/'
 
-    const adminUrl = API_URL + '/admin'
+    const adminUrl = 'https://api.easy-shop.biz/admin'
 
     return (
       <a href={adminUrl} target='_blank' rel='noopener noreferrer'>
-        <span className=''> Admin</span>
+        <span className=''>Admin</span>
       </a>
     )
   }
