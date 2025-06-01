@@ -4,19 +4,20 @@ import { useSelector, useDispatch } from 'react-redux'
 import Indicator from '../images/Indicator'
 import { Link } from 'react-router-dom'
 import DarkModeButton from './DarkModeButton'
+import { API_URL } from '../../config'
 const Header = () => {
   const user = useSelector((state) => state.user.user)
-
 
   const userInitials = user?.first_name[0] + ' ' + user?.last_name[0]
 
   // In your navigation component or wherever you want to place the admin link
   const AdminLink = () => {
     // This will handle both development and production environments
-    const adminUrl =
-      import.meta.env.VITE_NODE_ENV === 'production'
-        ? '/admin/' // In production, they'll be on the same domain
-        : 'http://localhost:8000/admin/' // In development, point to Django server
+    // const adminUrl =
+    //   import.meta.env.VITE_NODE_ENV === 'production'
+    //     ? '/admin/' // In production, they'll be on the same domain
+    //     : 'http://localhost:8000/admin/'
+    const adminUrl = import.meta.env.VITE_NODE_ENV === API_URL + '/admin'
 
     return (
       <a href={adminUrl} target='_blank' rel='noopener noreferrer'>
@@ -24,7 +25,6 @@ const Header = () => {
       </a>
     )
   }
-
 
   return (
     <div className=' min-h-[50px] align-element  '>
