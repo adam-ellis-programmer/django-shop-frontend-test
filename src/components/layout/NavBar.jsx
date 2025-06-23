@@ -29,7 +29,6 @@ const NavBar = () => {
         <CartLink top={`50px`} left={'50px'} />
         <Link className='w-[200px] h-full  grid place-items-center'>
           <img className='h-50px mr-10 ' src={test} alt='' />
-          123
         </Link>
         <div className='block sm:hidden'>
           <div>
