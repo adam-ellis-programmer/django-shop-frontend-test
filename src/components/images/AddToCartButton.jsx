@@ -1,6 +1,6 @@
 // src/components/AddToCartButton.jsx
 
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   addItemToCart,
@@ -9,13 +9,17 @@ import {
 } from '../../features/cart/cartSlice'
 import useTestUserCheck from '../../hooks/useTestUserCheck'
 import useGlobalMessage from '../../hooks/useGlobalMessage'
+import useAuth from '../../hooks/checkAuthStatus'
 
 const AddToCartButton = ({ front, product }) => {
+  const alertRef = useRef()
+  const { isLoggedIn } = useAuth()
   const { isTestUser, checkTestUser } = useTestUserCheck()
   const dispatch = useDispatch()
   const loading = useSelector(selectCartLoading)
   const [isAdding, setIsAdding] = useState(false)
   const [selectedQuantity, setselectedQuantity] = useState(1)
+  const [showAlert, setShowAlert] = useState(false)
   const { showMessage } = useGlobalMessage()
 
   const itemsInStock = Array.from(
@@ -23,7 +27,13 @@ const AddToCartButton = ({ front, product }) => {
     (_, i) => i + 1
   )
   const handleAddToCart = () => {
+    // console.log('isLoggedIn', isLoggedIn)
+    if (!isLoggedIn) {
+      setShowAlert(true)
+      return
+    }
     if (checkTestUser()) return
+
     if (selectedQuantity === 0) {
       showMessage(
         'Please select a quantity before adding to cart',
@@ -34,7 +44,7 @@ const AddToCartButton = ({ front, product }) => {
     if (loading || isAdding) return
 
     setIsAdding(true)
-    // console.log('Adding to cart:', product) 
+    // console.log('Adding to cart:', product)
 
     dispatch(
       addItemToCart({
@@ -62,6 +72,12 @@ const AddToCartButton = ({ front, product }) => {
     setselectedQuantity(numInStock)
   }
 
+  useEffect(() => {
+    if (showAlert && alertRef.current) {
+      alertRef.current.focus()
+    }
+  }, [showAlert])
+
   const renderSelect = () => {
     return (
       <select
@@ -81,6 +97,7 @@ const AddToCartButton = ({ front, product }) => {
     )
   }
 
+  // for the product card display
   if (front) {
     return (
       <>
@@ -99,26 +116,37 @@ const AddToCartButton = ({ front, product }) => {
   }
 
   return (
-    <div className='flex'>
-      {renderSelect()}
-      <button
-        onClick={handleAddToCart}
-        className='btn btn-secondary'
-        disabled={loading || isAdding}
-      >
-        {isAdding ? (
-          <>
-            <span
-              className='spinner-border spinner-border-sm me-2'
-              role='status'
-              aria-hidden='true'
-            ></span>
-            Adding...
-          </>
-        ) : (
-          'Add to cart'
-        )}
-      </button>
+    <div className=''>
+      {showAlert && (
+        <div
+          tabIndex={-1}
+          ref={alertRef}
+          className='mb-5 rounded text-center p-3 bg-rose-400 text-white'
+        >
+          log in to add to cart!{' '}
+        </div>
+      )}
+      <div className='flex'>
+        {renderSelect()}
+        <button
+          onClick={handleAddToCart}
+          className='btn btn-secondary'
+          disabled={loading || isAdding}
+        >
+          {isAdding ? (
+            <>
+              <span
+                className='spinner-border spinner-border-sm me-2'
+                role='status'
+                aria-hidden='true'
+              ></span>
+              Adding...
+            </>
+          ) : (
+            'Add to cart'
+          )}
+        </button>
+      </div>
     </div>
   )
 }
